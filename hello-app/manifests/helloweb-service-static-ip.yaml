@@ -4,12 +4,13 @@ metadata:
   name: helloweb
   labels:
     app: hello
-spec:
-  selector:
-    app: hello
     tier: web
+spec:
+  type: LoadBalancer
   ports:
   - port: 80
+    protocol: TCP
     targetPort: 8080
-  type: LoadBalancer
-  loadBalancerIP: "YOUR.IP.ADDRESS.HERE"
+  selector:
+      app: hello
+      tier: web
